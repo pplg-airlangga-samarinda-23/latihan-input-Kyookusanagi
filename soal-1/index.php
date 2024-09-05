@@ -6,13 +6,19 @@
 <body>
     <h1>Soal 1</h1>
     <form method="post">
-        <input type="number" name="jarijari"> <br>
-        <input type="number" name="tinggi"> <br>
+        Masukkan jari-jari   <input type="number" name="jarijari" required> <br>
+        Masukkan tinggi    <input type="number" name="tinggi" required> <br>
         <button type="submit">Hitung Volume</button>
         <button type="reset">Reset</button>
     </form>
     <?php
-        // tambahkan perhitungan volume tabung di sini
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $jarijari = $_POST["jarijari"];
+            $tinggi = $_POST["tinggi"];
+            $phi = 3.14;
+            $volume = $phi * pow($jarijari, 2) * $tinggi;
+            echo "Volume tabung: " . number_format($volume, 2) . " cubic units";
+        }
     ?>
 </body>
 </html>
